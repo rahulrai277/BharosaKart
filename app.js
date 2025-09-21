@@ -1652,7 +1652,7 @@ function handleContactForm(e) {
     
     // Send email using EmailJS
     const emailParams = {
-        to_name: 'RahulShop Support',
+        to_name: 'BharosaKart Support',
         to_email: 'rkrnauheed1995@gmail.com',
         from_name: formData.name,
         from_email: formData.email,
