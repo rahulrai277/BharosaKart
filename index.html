@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RahulShop - Premium E-commerce Store</title>
+    <meta name="description" content="Shop premium electronics, fashion, home goods, sports equipment and books at RahulShop. Fast delivery with Pay on Delivery option.">
+    <meta name="keywords" content="online shopping, electronics, fashion, home goods, sports, books, pay on delivery, COD">
+    <meta name="author" content="Rahul Rai">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Advanced Animated Background Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-palette"></i>
+        </button>
+        <div class="theme-options" id="themeOptions">
+            <h6>Choose Theme</h6>
+            <div class="theme-grid">
+                <button class="theme-btn active" data-theme="blue">Blue Professional</button>
+                <button class="theme-btn" data-theme="dark">Dark Theme</button>
+                <button class="theme-btn" data-theme="orange">Orange Creative</button>
+                <button class="theme-btn" data-theme="purple">Purple Modern</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container for Notifications -->
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;">
+        <div id="toastNotification" class="toast align-items-center border-0" role="alert">
+            <div class="d-flex">
+                <div class="toast-body" id="toastBody"></div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">
+                <i class="fas fa-shopping-bag me-2"></i>RahulShop
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Products
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#products" data-category="all">All Products</a></li>
+                            <li><a class="dropdown-item" href="#products" data-category="Electronics">Electronics</a></li>
+                            <li><a class="dropdown-item" href="#products" data-category="Fashion">Fashion</a></li>
+                            <li><a class="dropdown-item" href="#products" data-category="Home & Garden">Home & Garden</a></li>
+                            <li><a class="dropdown-item" href="#products" data-category="Sports">Sports</a></li>
+                            <li><a class="dropdown-item" href="#products" data-category="Books">Books</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Collections
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#products" data-filter="new">New Arrivals</a></li>
+                            <li><a class="dropdown-item" href="#products" data-filter="bestseller">Best Sellers</a></li>
+                            <li><a class="dropdown-item" href="#products" data-filter="sale">Sale Items</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="search-container me-3">
+                        <input type="text" class="form-control search-input" placeholder="Search products..." id="searchInput">
+                    </div>
+                    <button class="btn btn-outline-light position-relative me-2" id="cartBtn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-badge" id="cartBadge">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="hero-section">
+            <div class="container">
+                <div class="row align-items-center min-vh-100">
+                    <div class="col-lg-6">
+                        <h1 class="display-4 fw-bold text-white mb-4 animate-slide-up">
+                            Premium Shopping Experience
+                        </h1>
+                        <p class="lead text-white mb-4 animate-slide-up delay-1">
+                            Discover amazing products at unbeatable prices. From electronics to fashion, we have everything you need with convenient Pay on Delivery option.
+                        </p>
+                        <div class="animate-slide-up delay-2">
+                            <a href="#products" class="btn btn-warning btn-lg me-3">
+                                <i class="fas fa-shopping-bag me-2"></i>Shop Now
+                            </a>
+                            <a href="#about" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-info-circle me-2"></i>Learn More
+                            </a>
+                        </div>
+                        <div class="hero-features mt-4 animate-slide-up delay-3">
+                            <div class="row">
+                                <div class="col-6 col-md-3 mb-2">
+                                    <div class="feature-item text-white text-center">
+                                        <i class="fas fa-truck fs-3"></i>
+                                        <small class="d-block">Fast Delivery</small>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3 mb-2">
+                                    <div class="feature-item text-white text-center">
+                                        <i class="fas fa-money-bill fs-3"></i>
+                                        <small class="d-block">Pay on Delivery</small>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3 mb-2">
+                                    <div class="feature-item text-white text-center">
+                                        <i class="fas fa-undo fs-3"></i>
+                                        <small class="d-block">Easy Returns</small>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-md-3 mb-2">
+                                    <div class="feature-item text-white text-center">
+                                        <i class="fas fa-headset fs-3"></i>
+                                        <small class="d-block">24/7 Support</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="hero-image animate-fade-in delay-3 text-center">
+                            <i class="fas fa-shopping-bag hero-icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Featured Products</h2>
+                    <p class="lead text-muted">Handpicked products just for you</p>
+                </div>
+                <div class="row" id="featuredProducts">
+                    <!-- Featured products will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Our Products</h2>
+                    <p class="lead text-muted">Explore our wide range of quality products</p>
+                </div>
+                
+                <!-- Product Filters -->
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <div class="category-filters">
+                            <button class="btn btn-outline-primary active me-2 mb-2" data-category="all">All Products</button>
+                            <button class="btn btn-outline-primary me-2 mb-2" data-category="Electronics">
+                                <i class="fas fa-laptop me-1"></i>Electronics
+                            </button>
+                            <button class="btn btn-outline-primary me-2 mb-2" data-category="Fashion">
+                                <i class="fas fa-tshirt me-1"></i>Fashion
+                            </button>
+                            <button class="btn btn-outline-primary me-2 mb-2" data-category="Home & Garden">
+                                <i class="fas fa-home me-1"></i>Home & Garden
+                            </button>
+                            <button class="btn btn-outline-primary me-2 mb-2" data-category="Sports">
+                                <i class="fas fa-dumbbell me-1"></i>Sports
+                            </button>
+                            <button class="btn btn-outline-primary me-2 mb-2" data-category="Books">
+                                <i class="fas fa-book me-1"></i>Books
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="sort-options">
+                            <select class="form-select" id="sortSelect">
+                                <option value="name">Sort by Name</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="rating">Sort by Rating</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="row" id="productGrid">
+                    <!-- Products will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-5 bg-light">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <h2 class="display-5 fw-bold mb-4">About RahulShop</h2>
+                        <p class="lead mb-4">
+                            Your trusted online destination for premium products at affordable prices with convenient Pay on Delivery option.
+                        </p>
+                        <p class="mb-4">
+                            Founded with a vision to provide exceptional shopping experience, we offer a wide range of products 
+                            from electronics to fashion, home goods to sports equipment. Our commitment to quality, customer 
+                            service, and competitive pricing has made us a preferred choice for thousands of customers across India.
+                        </p>
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-check-circle text-success fs-4 me-3"></i>
+                                    <span>Premium Quality Products</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-shipping-fast text-success fs-4 me-3"></i>
+                                    <span>Fast & Secure Delivery</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-headset text-success fs-4 me-3"></i>
+                                    <span>24/7 Customer Support</span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-undo text-success fs-4 me-3"></i>
+                                    <span>Easy Returns & Refunds</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about-image text-center">
+                            <i class="fas fa-store about-icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">What Our Customers Say</h2>
+                    <p class="lead text-muted">Real reviews from satisfied customers</p>
+                </div>
+                <div class="row" id="testimonials">
+                    <!-- Testimonials will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-5 bg-light">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Frequently Asked Questions</h2>
+                    <p class="lead text-muted">Find answers to common questions</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <div id="faqContainer">
+                            <!-- FAQ sections will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold">Contact Us</h2>
+                    <p class="lead text-muted">Get in touch with our team</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="contact-info">
+                            <h4 class="mb-4">Get In Touch</h4>
+                            <div class="contact-item mb-3">
+                                <i class="fas fa-envelope text-primary fs-4 me-3"></i>
+                                <div>
+                                    <h6 class="mb-1">Email</h6>
+                                    <span>rkrnauheed1995@gmail.com</span>
+                                </div>
+                            </div>
+                            <div class="contact-item mb-3">
+                                <i class="fas fa-phone text-primary fs-4 me-3"></i>
+                                <div>
+                                    <h6 class="mb-1">Phone</h6>
+                                    <span>+91 7992312959</span>
+                                </div>
+                            </div>
+                            <div class="contact-item mb-3">
+                                <i class="fas fa-map-marker-alt text-primary fs-4 me-3"></i>
+                                <div>
+                                    <h6 class="mb-1">Address</h6>
+                                    <span>New Delhi, India</span>
+                                </div>
+                            </div>
+                            <div class="contact-item mb-3">
+                                <i class="fas fa-clock text-primary fs-4 me-3"></i>
+                                <div>
+                                    <h6 class="mb-1">Business Hours</h6>
+                                    <span>Mon-Sat: 9 AM - 8 PM</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-globe text-primary fs-4 me-3"></i>
+                                <div>
+                                    <h6 class="mb-1">Portfolio</h6>
+                                    <a href="https://portfolio-rahulrai.netlify.app/" target="_blank">Visit Portfolio</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <form id="contactForm" class="contact-form">
+                            <div class="mb-3">
+                                <label for="contactName" class="form-label">Name *</label>
+                                <input type="text" class="form-control" id="contactName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactEmail" class="form-label">Email *</label>
+                                <input type="email" class="form-control" id="contactEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactPhone" class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="contactPhone">
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactSubject" class="form-label">Subject *</label>
+                                <input type="text" class="form-control" id="contactSubject" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contactMessage" class="form-label">Message *</label>
+                                <textarea class="form-control" id="contactMessage" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-paper-plane me-2"></i>Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-shopping-cart me-2"></i>Shopping Cart
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cartItems">
+                        <!-- Cart items will be displayed here -->
+                    </div>
+                    <div class="cart-summary mt-4 pt-3 border-top">
+                        <div class="row">
+                            <div class="col-6">
+                                <h5>Total: ₹<span id="cartTotal">0</span></h5>
+                            </div>
+                            <div class="col-6 text-end">
+                                <small class="text-muted">Free delivery on orders above ₹999</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-arrow-left me-2"></i>Continue Shopping
+                    </button>
+                    <button type="button" class="btn btn-primary" id="checkoutBtn">
+                        <i class="fas fa-credit-card me-2"></i>Proceed to Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="productModalBody">
+                    <!-- Product details will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-shopping-cart me-2"></i>Checkout
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="checkoutForm">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <h6 class="mb-3">
+                                    <i class="fas fa-user me-2"></i>Customer Information
+                                </h6>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Full Name *</label>
+                                        <input type="text" class="form-control" id="billingName" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Email *</label>
+                                        <input type="email" class="form-control" id="billingEmail" required>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">Phone *</label>
+                                        <input type="tel" class="form-control" id="billingPhone" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label">PIN Code *</label>
+                                        <input type="text" class="form-control" id="billingPincode" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Complete Address *</label>
+                                    <textarea class="form-control" id="billingAddress" rows="3" required></textarea>
+                                </div>
+                                
+                                <h6 class="mt-4 mb-3">
+                                    <i class="fas fa-credit-card me-2"></i>Payment Method
+                                </h6>
+                                <div class="payment-options">
+                                    <div class="form-check mb-3 payment-option">
+                                        <input class="form-check-input" type="radio" name="paymentMethod" id="cod" value="cod" checked>
+                                        <label class="form-check-label" for="cod">
+                                            <div class="payment-option-content">
+                                                <i class="fas fa-money-bill-wave text-success fs-4"></i>
+                                                <div class="ms-3">
+                                                    <h6 class="mb-1">Pay on Delivery (Recommended)</h6>
+                                                    <p class="text-muted mb-0">Pay with cash when your order arrives at your doorstep</p>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-3 payment-option">
+                                        <input class="form-check-input" type="radio" name="paymentMethod" id="razorpay" value="razorpay" disabled>
+                                        <label class="form-check-label" for="razorpay">
+                                            <div class="payment-option-content">
+                                                <i class="fas fa-credit-card text-primary fs-4"></i>
+                                                <div class="ms-3">
+                                                    <h6 class="mb-1">Razorpay</h6>
+                                                    <p class="text-muted mb-0">Cards, UPI, Net Banking, Wallets</p>
+                                                    <small class="text-warning">Coming Soon</small>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <h6 class="mb-3">
+                                    <i class="fas fa-receipt me-2"></i>Order Summary
+                                </h6>
+                                <div id="checkoutSummary" class="checkout-summary">
+                                    <!-- Order summary will be displayed here -->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-2"></i>Cancel
+                    </button>
+                    <button type="button" class="btn btn-success btn-lg" id="placeOrderBtn">
+                        <i class="fas fa-check me-2"></i>Place Order
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-4">
+                        <i class="fas fa-shopping-bag me-2"></i>RahulShop
+                    </h5>
+                    <p class="mb-4">Your trusted online shopping destination for premium products at affordable prices with convenient Pay on Delivery option.</p>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3" title="Facebook">
+                            <i class="fab fa-facebook fs-4"></i>
+                        </a>
+                        <a href="#" class="text-white me-3" title="Twitter">
+                            <i class="fab fa-twitter fs-4"></i>
+                        </a>
+                        <a href="#" class="text-white me-3" title="Instagram">
+                            <i class="fab fa-instagram fs-4"></i>
+                        </a>
+                        <a href="#" class="text-white me-3" title="LinkedIn">
+                            <i class="fab fa-linkedin fs-4"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-4">Contact Information</h5>
+                    <div class="contact-item mb-2">
+                        <i class="fas fa-envelope me-2"></i>
+                        <span>rkrnauheed1995@gmail.com</span>
+                    </div>
+                    <div class="contact-item mb-2">
+                        <i class="fas fa-phone me-2"></i>
+                        <span>+91 7992312959</span>
+                    </div>
+                    <div class="contact-item mb-2">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        <span>New Delhi, India</span>
+                    </div>
+                    <div class="contact-item mb-2">
+                        <i class="fas fa-clock me-2"></i>
+                        <span>Mon-Sat: 9 AM - 8 PM</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe me-2"></i>
+                        <a href="https://portfolio-rahulrai.netlify.app/" target="_blank" class="text-white">Portfolio Website</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-4">Newsletter</h5>
+                    <p class="mb-3">Subscribe to get updates on new products and exclusive offers.</p>
+                    <form id="newsletterForm" class="d-flex">
+                        <input type="email" class="form-control me-2" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2025 <a href="https://portfolio-rahulrai.netlify.app/" target="_blank">Rahul Rai.</a> All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>
