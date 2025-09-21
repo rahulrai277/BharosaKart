@@ -342,7 +342,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initializeApp() {
-    console.log('Initializing RahulShop application...');
+    console.log('Initializing  BharosaKart application...');
     
     // Initialize EmailJS
     emailjs.init(appData.emailjsConfig.publicKey);
@@ -373,7 +373,7 @@ function initializeApp() {
     
     // Show welcome toast
     setTimeout(() => {
-        showToast('Welcome to RahulShop! Enjoy shopping with Pay on Delivery option.', 'success');
+        showToast('Welcome to BharosaKart! Enjoy shopping with Pay on Delivery option.', 'success');
     }, 1000);
     
     console.log('Application initialized successfully');
