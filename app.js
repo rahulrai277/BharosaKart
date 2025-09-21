@@ -1459,7 +1459,7 @@ function sendOrderConfirmationEmail(order) {
     const customerEmailParams = {
         to_name: order.customer.name,
         to_email: order.customer.email,
-        from_name: 'RahulShop',
+        from_name: 'BharosaKart',
         order_id: order.id,
         order_total: '₹' + order.total.toLocaleString(),
         order_items: order.items.map(item => `${item.name} (x${item.quantity}) - ₹${(item.price * item.quantity).toLocaleString()}`).join('\n'),
@@ -1480,7 +1480,7 @@ function sendOrderConfirmationEmail(order) {
     const adminEmailParams = {
         to_name: 'Admin',
         to_email: 'rkrnauheed1995@gmail.com',
-        from_name: 'RahulShop System',
+        from_name: 'BharosaKart System',
         order_id: order.id,
         order_total: '₹' + order.total.toLocaleString(),
         order_items: order.items.map(item => `${item.name} (x${item.quantity}) - ₹${(item.price * item.quantity).toLocaleString()}`).join('\n'),
